@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #110225;
+        }
+        
+        img {
+            width: 100%;
+            vertical-align: middle;
+        }
+        
+        .list {
+            max-width: 800px;
+            padding: 10px;
+            margin: 50px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .item {
+            width: calc(100% / 3);
+            padding: 2.5%;
+        }
+        
+        .box {
+            position: relative;
+        }
+        
+        .frame {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 0 8px #d9b3e0;
+        }
+        
+        .frame::before {
+            content: "";
+            width: 200%;
+            height: 0;
+            padding-bottom: 300%;
+            margin: auto;
+            position: absolute;
+            background-color: #542b89;
+            background-image: conic-gradient(transparent, #fff, #999, transparent 30%);
+            animation: rotate 2s linear infinite;
+        }
+        
+        .frame span {
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%;
+            background: url(images/bg.jpg) no-repeat center / cover;
+            position: relative;
+            border-radius: 100%;
+            z-index: 1;
+            box-shadow: 0 0 25px #fff inset;
+        }
+        
+        @keyframes rotate {
+            100% {
+                transform: rotate(-360deg);
+            }
+        }
+        
+        .girl {
+            width: 80%;
+            height: 100%;
+            margin: auto;
+            position: absolute;
+            z-index: 2;
+            top: -15%;
+            left: 0;
+            right: 0;
+            overflow-y: hidden;
+        }
+        
+        .title {
+            width: 100%;
+            height: 25%;
+            margin: auto;
+            border-radius: 8px;
+            background: linear-gradient(30deg, #000, #444345 25%, #130F14 50%);
+            box-shadow: 0 2px 2px #a173a9;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 8%;
+            z-index: 2;
+        }
+        
+        .logo {
+            width: 100%;
+            height: 100%;
+            background: url(images/logo.png) no-repeat center / 50%;
+            opacity: .8;
+        }
+        
+        .btn {
+            width: 90%;
+            height: 18%;
+            min-height: 35px;
+            margin: 6% auto 0;
+            padding: 3px;
+            color: #fff;
+            border-radius: 30px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 0 2px #d185f8;
+            cursor: pointer;
+        }
+        
+        .btn::before {
+            content: "";
+            width: 200%;
+            height: 0;
+            padding-bottom: 300%;
+            position: absolute;
+            background-color: #5d5d5d;
+            background-image: conic-gradient(transparent, #fff, #5f5f5f, transparent 50%);
+            animation: rotate2 3s linear infinite;
+            transform: rotate(0deg);
+        }
+        
+        .btn span {
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+            z-index: 1;
+            background-color: #AE23F2;
+            box-shadow: -4px 4px 8px rgba(255, 255, 255, .5) inset;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        @keyframes rotate2 {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        /* ============= arrowBtn ===================== */
+        .arrowList{
+            max-width: 250px;
+            margin: 0 auto 50px;
+        }
+        .arrowBtn {
+            margin-bottom: 8px;
+            padding: 2px;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 8% 50%);
+            background-image: linear-gradient(90deg, #eee, #8D671D, #BD9A3B, transparent 70%);
+            cursor: pointer;
+            transition: .3s;
+            opacity: .5;
+        }
+        .arrowBtn:hover{
+            opacity: 1;
+            transform: scale(1.1) translateX(-4%);
+        }
+
+        .arrowBtn .inner {
+            width: 100%;
+            height: 100%;
+            padding: 10px 10px 10px 22%;
+            background: linear-gradient(90deg, #5544BD, #221554 80%,transparent);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 9% 50%);
+            z-index: 2;
+            color: #fff;
+        }
+        
+        .arrowBtn .icon {
+            width: 24px;
+            margin-right: 6px;
+        }
+
+        .arrowBtn:nth-child(even){
+            clip-path: polygon(0% 0%, 88% 0%, 100% 50%, 88% 100%, 0% 100%);
+            background-image: linear-gradient(-90deg, #eee, #8D671D, #BD9A3B, transparent 70%);
+        }
+
+        .arrowBtn:nth-child(even):hover{
+            opacity: 1;
+            transform: scale(1.1) translateX(4%);
+        }
+
+        .arrowBtn:nth-child(even) .inner{
+            padding: 10px 14% 10px 10px;
+            justify-content: right;
+            clip-path: polygon(0% 0%, 88% 0%, 99% 50%, 88% 100%, 0% 100%);
+            background: linear-gradient(-90deg, #5544BD, #221554 80%,transparent);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="list">
+        <div class="item">
+            <div class="box">
+                <div class="frame"><span></span></div>
+                <div class="girl">
+                    <img src="images/girl.png">
+                </div>
+                <div class="title">
+                    <div class="logo"></div>
+                </div>
+            </div>
+            <div class="btn"><span>Play</span></div>
+        </div>
+        <div class="item">
+            <div class="box">
+                <div class="frame"><span></span></div>
+                <div class="girl">
+                    <img src="images/girl.png">
+                </div>
+                <div class="title">
+                    <div class="logo"></div>
+                </div>
+            </div>
+            <div class="btn"><span>Play</span></div>
+        </div>
+        <div class="item">
+            <div class="box">
+                <div class="frame"><span></span></div>
+                <div class="girl">
+                    <img src="images/girl.png">
+                </div>
+                <div class="title">
+                    <div class="logo"></div>
+                </div>
+            </div>
+            <div class="btn"><span>Play</span></div>
+        </div>
+        <div class="item">
+            <div class="box">
+                <div class="frame"><span></span></div>
+                <div class="girl">
+                    <img src="images/girl.png">
+                </div>
+                <div class="title">
+                    <div class="logo"></div>
+                </div>
+            </div>
+            <div class="btn"><span>Play</span></div>
+        </div>
+        <div class="item">
+            <div class="box">
+                <div class="frame"><span></span></div>
+                <div class="girl">
+                    <img src="images/girl.png">
+                </div>
+                <div class="title">
+                    <div class="logo"></div>
+                </div>
+            </div>
+            <div class="btn"><span>Play</span></div>
+        </div>
+
+    </div>
+
+    <div class="arrowList">
+        <div class="arrowBtn">
+            <div class="inner">
+                <div class="icon">
+                    <img src="images/clock.svg">
+                </div>
+                <p>HISTORY</p>
+            </div>
+        </div>
+    
+        <div class="arrowBtn">
+            <div class="inner">
+                <div class="icon">
+                    <img src="images/clock.svg">
+                </div>
+                <p>HISTORY</p>
+            </div>
+        </div>
+
+        <div class="arrowBtn">
+            <div class="inner">
+                <div class="icon">
+                    <img src="images/clock.svg">
+                </div>
+                <p>HISTORY</p>
+            </div>
+        </div>
+
+        <div class="arrowBtn">
+            <div class="inner">
+                <div class="icon">
+                    <img src="images/clock.svg">
+                </div>
+                <p>HISTORY</p>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+</html>
